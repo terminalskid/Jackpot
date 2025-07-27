@@ -1,0 +1,128 @@
+#!/usr/bin/env python3
+import subprocess
+import sys
+
+# List of required modules
+required_modules = ["piexif", "exifread", "pillow"]
+
+def install(module):
+    try:
+        subprocess.check_call([sys.executable, "-m", "pip", "install", module])
+        print(f"Successfully installed {module}")
+    except subprocess.CalledProcessError:
+        print(f"Error installing {module}. Please install it manually.")
+
+# Check and install missing modules
+for module in required_modules:
+    try:
+        __import__(module)
+    except ImportError:
+        print(f"Module {module} not found. Installing...")
+        install(module)
+
+# Continue with your actual script logic below
+import os
+import time
+
+# -------- Settings -------- #
+YOUR_TAG = "@terminalskid"
+TITLE = "Jackpot"
+TOOL_COUNT = 7
+
+# Define tool paths and names (correct these paths to your actual tool paths) 
+TOOL_PATHS = {
+    "01": ("/home/kay/jackpot-tool/Program/image-data.py", "Image Data"),
+    "02": ("/home/kay/jackpot-tool/Program/dark-web.py", "Dark Web"),
+    "03": ("/home/kay/jackpot-tool/Program/email-lookup.py", "Email Lookup"),
+    "04": ("/home/kay/jackpot-tool/Program/ip-lookup.py", "IP Lookup"),
+    "05": ("/home/kay/jackpot-tool/Program/phisher.py", "Phishing Script"),
+    "06": ("/home/kay/jackpot-tool/Program/phone-lookup.py", "Phone Number Lookup"),
+    "07": ("/home/kay/jackpot-tool/Program/username-tracker.py", "Username Tracker"),
+}
+
+# Global variable for page navigation
+current_page = 1
+tools_per_page = 15
+
+def clear():
+    os.system("cls" if os.name == "nt" else "clear")
+
+def ascii_banner():
+    return r"""
+      ██╗ █████╗  ██████╗██╗  ██╗██████╗  ██████╗ ████████╗
+      ██║██╔══██╗██╔════╝██║ ██╔╝██╔══██╗██╔═══██╗╚══██╔══╝
+      ██║███████║██║     █████╔╝ ██████╔╝██║   ██║   ██║   
+ ██   ██║██╔══██║██║     ██╔═██╗ ██╔═══╝ ██║   ██║   ██║   
+ ╚█████╔╝██║  ██║╚██████╗██║  ██╗██║     ╚██████╔╝   ██║   
+  ╚════╝ ╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝╚═╝      ╚═════╝    ╚═╝   
+
+                Terminal Multitool — by @terminalskid
+    """
+
+def show_menu():
+    global current_page
+    clear()
+    print(ascii_banner())
+    print(f"Current Page: {current_page} / {max_pages()}\n")
+    start = (current_page - 1) * tools_per_page
+    end = min(start + tools_per_page, TOOL_COUNT)
+
+    for i in range(start, end):
+        code = f"{i + 1:02d}"
+        name = TOOL_PATHS[code][1]  # Fetching the tool name
+        print(f"  [{code}] {name}")
+    print("\n[H] Help   [N] Next Page   [P] Prev Page   [Q] Quit")
+
+def max_pages():
+    return (TOOL_COUNT + tools_per_page - 1) // tools_per_page
+
+def launch_tool(code):
+    if code in TOOL_PATHS:
+        print(f"\n>> Launching {TOOL_PATHS[code][1]} — handled by ({YOUR_TAG})\n")
+        time.sleep(0.3)
+        tool_path = TOOL_PATHS[code][0]
+        
+        if os.path.exists(tool_path):
+            os.system(f'python3 "{tool_path}"')  # Run the script if path is valid
+        else:
+            print(f"Error: {tool_path} does not exist. Please check the tool path.")
+    else:
+        print(f"\n>> No tool configured for code '{code}'.")
+
+def show_help():
+    print("\nHelp Section:")
+    print("For more tools and information, visit: https://guns.lol/skidboi")
+    input("\nPress Enter to return to the menu...")
+
+def main():
+    global current_page
+    while True:
+        show_menu()
+        user_input = input("\n> Enter code or command: ").strip().lower()
+
+        if user_input == 'q':
+            print("\nExiting Jackpot. See you soon!")
+            break
+        elif user_input == 'h':
+            show_help()
+        elif user_input == 'n':
+            if current_page < max_pages():
+                current_page += 1
+            else:
+                print("Already at the last page.")
+                time.sleep(1)
+        elif user_input == 'p':
+            if current_page > 1:
+                current_page -= 1
+            else:
+                print("Already at the first page.")
+                time.sleep(1)
+        elif user_input.zfill(2) in TOOL_PATHS:
+            launch_tool(user_input.zfill(2))
+            input("\nPress ENTER to return to the menu...")
+        else:
+            print("Invalid input. Use the tool number (e.g., 01, 02...) or 'exit' or 'help'.")
+            time.sleep(1)
+
+if __name__ == "__main__":
+    main()
