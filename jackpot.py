@@ -95,7 +95,7 @@ def launch_tool(code):
         tool_path = TOOL_PATHS[code][0]
         
         if os.path.exists(tool_path):
-            os.system(f'python3 "{tool_path}"')  # Run the script if path is valid
+            os.system(f'py "{tool_path}"')  # Run the script if path is valid
         else:
             print(f"Error: {tool_path} does not exist. Please check the tool path.")
     else:
