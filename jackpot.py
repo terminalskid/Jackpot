@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import subprocess
 import sys
+import os
 
 # List of required modules
 required_modules = ["piexif", "exifread", "pillow"]
@@ -20,7 +21,6 @@ for module in required_modules:
         print(f"Module {module} not found. Installing...")
         install(module)
 
-# Continue with your actual script logic below
 import os
 import time
 
@@ -29,16 +29,22 @@ YOUR_TAG = "@terminalskid"
 TITLE = "Jackpot"
 TOOL_COUNT = 7
 
-# Define tool paths and names (correct these paths to your actual tool paths) 
+import os
+
+# Get home directory dynamically
+HOME_DIR = os.path.expanduser("~")
+BASE_PATH = os.path.join(HOME_DIR, "jackpot-tool", "Program")
+
 TOOL_PATHS = {
-    "01": ("/home/kay/jackpot-tool/Program/image-data.py", "Image Data"),
-    "02": ("/home/kay/jackpot-tool/Program/dark-web.py", "Dark Web"),
-    "03": ("/home/kay/jackpot-tool/Program/email-lookup.py", "Email Lookup"),
-    "04": ("/home/kay/jackpot-tool/Program/ip-lookup.py", "IP Lookup"),
-    "05": ("/home/kay/jackpot-tool/Program/phisher.py", "Phishing Script"),
-    "06": ("/home/kay/jackpot-tool/Program/phone-lookup.py", "Phone Number Lookup"),
-    "07": ("/home/kay/jackpot-tool/Program/username-tracker.py", "Username Tracker"),
+    "01": (os.path.join(BASE_PATH, "image-data.py"), "Image Data"),
+    "02": (os.path.join(BASE_PATH, "dark-web.py"), "Dark Web"),
+    "03": (os.path.join(BASE_PATH, "email-lookup.py"), "Email Lookup"),
+    "04": (os.path.join(BASE_PATH, "ip-lookup.py"), "IP Lookup"),
+    "05": (os.path.join(BASE_PATH, "phisher.py"), "Phishing Script"),
+    "06": (os.path.join(BASE_PATH, "phone-lookup.py"), "Phone Number Lookup"),
+    "07": (os.path.join(BASE_PATH, "username-tracker.py"), "Username Tracker"),
 }
+
 
 # Global variable for page navigation
 current_page = 1
