@@ -23,6 +23,11 @@ for module in required_modules:
 
 import os
 import time
+import shutil
+
+def get_python_command():
+    return "python" if shutil.which("python") else "py"
+
 
 # -------- Settings -------- #
 YOUR_TAG = "@terminalskid"
