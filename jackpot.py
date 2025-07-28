@@ -33,7 +33,7 @@ import os
 
 # Get home directory dynamically
 HOME_DIR = os.path.expanduser("~")
-BASE_PATH = os.path.join(HOME_DIR, "jackpot-tool", "Program")
+BASE_PATH = os.path.join(HOME_DIR, "Downloads", "Jackpot-main", "Jackpot-main", "Program")
 
 TOOL_PATHS = {
     "01": (os.path.join(BASE_PATH, "image-data.py"), "Image Data"),
