@@ -35,6 +35,7 @@ import os
 HOME_DIR = os.path.expanduser("~")
 BASE_PATH = os.path.join(HOME_DIR, "Downloads", "Jackpot-main", "Jackpot-main", "Program")
 
+# Define tool paths and names
 TOOL_PATHS = {
     "01": (os.path.join(BASE_PATH, "image-data.py"), "Image Data"),
     "02": (os.path.join(BASE_PATH, "dark-web.py"), "Dark Web"),
