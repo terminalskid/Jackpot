@@ -2,6 +2,8 @@
 import subprocess
 import sys
 import os
+import time
+import shutil
 
 # List of required modules
 required_modules = ["piexif", "exifread", "pillow"]
@@ -18,43 +20,35 @@ for module in required_modules:
     try:
         __import__(module)
     except ImportError:
-        print(f"Module {module} not found. Installing...")
+        print(f"Module {module} not found, installing...")
         install(module)
-
-import os
-import time
-import shutil
 
 def get_python_command():
     return "python" if shutil.which("python") else "py"
-
 
 # -------- Settings -------- #
 AUTHOR = "@terminalskid"
 TITLE = "Jackpot"
 TOOL_COUNT = 11
 
-import os
-
 # Get home directory dynamically
 HOME_DIR = os.path.expanduser("~")
-BASE_PATH = os.path.join(HOME_DIR, "Downloads", "Jackpot-main", "Jackpot-main", "Program")
+BASE_PATH = os.path.join(HOME_DIR, "Downloads", "Jackpot-main", "Program")
 
 # Define tool paths and names
 TOOL_PATHS = {
-    "01": (os.path.join(BASE_PATH, "image-data.py"), "Image Data"),
-    "02": (os.path.join(BASE_PATH, "dark-web.py"), "Dark Web"),
-    "03": (os.path.join(BASE_PATH, "email-lookup.py"), "Email Lookup"),
-    "04": (os.path.join(BASE_PATH, "ip-lookup.py"), "IP Lookup"),
-    "05": (os.path.join(BASE_PATH, "phisher.py"), "Phishing Script"),
-    "06": (os.path.join(BASE_PATH, "phone-lookup.py"), "Phone Number Lookup"),
-    "07": (os.path.join(BASE_PATH, "username-tracker.py"), "Username Tracker"),
-    "08": (os.path.join(BASE_PATH, "ip-scanner.py"), "IP Scanner"),
-    "09": (os.path.join(BASE_PATH, "Ip-Port-Scanner.py"), "IP Port Scanner"),
-    "010": (os.path.join(BASE_PATH, "ip-generator.py"), "IP Generator"),
-    "011": (os.path.join(BASE_PATH, "Ip-Pinger.py"), "IP Pinger"),
+    "1": (os.path.join(BASE_PATH, "image-data.py"), "Image Data"),
+    "2": (os.path.join(BASE_PATH, "dark-web.py"), "Dark Web"),
+    "3": (os.path.join(BASE_PATH, "email-lookup.py"), "Email Lookup"),
+    "4": (os.path.join(BASE_PATH, "ip-lookup.py"), "IP Lookup"),
+    "5": (os.path.join(BASE_PATH, "phisher.py"), "Phishing Script"),
+    "6": (os.path.join(BASE_PATH, "phone-lookup.py"), "Phone Number Lookup"),
+    "7": (os.path.join(BASE_PATH, "username-tracker.py"), "Username Tracker"),
+    "8": (os.path.join(BASE_PATH, "ip-scanner.py"), "IP Scanner"),
+    "9": (os.path.join(BASE_PATH, "Ip-Port-Scanner.py"), "IP Port Scanner"),
+    "10": (os.path.join(BASE_PATH, "ip-generator.py"), "IP Generator"),
+    "11": (os.path.join(BASE_PATH, "Ip-Pinger.py"), "IP Pinger"),
 }
-
 
 # Global variable for page navigation
 current_page = 1
@@ -80,13 +74,15 @@ def show_menu():
     clear()
     print(ascii_banner())
     print(f"Current Page: {current_page} / {max_pages()}\n")
+
     start = (current_page - 1) * tools_per_page
     end = min(start + tools_per_page, TOOL_COUNT)
 
     for i in range(start, end):
-        code = f"{i + 1:02d}"
-        name = TOOL_PATHS[code][1]  # Fetching the tool name
+        code = str(i + 1)
+        name = TOOL_PATHS[code][1]
         print(f"  [{code}] {name}")
+
     print("\n[H] Help   [N] Next Page   [P] Prev Page   [Q] Quit")
 
 def max_pages():
@@ -133,11 +129,11 @@ def main():
             else:
                 print("Already at the first page.")
                 time.sleep(1)
-        elif user_input.zfill(2) in TOOL_PATHS:
-            launch_tool(user_input.zfill(2))
+        elif user_input in TOOL_PATHS:
+            launch_tool(user_input)
             input("\nPress ENTER to return to the menu...")
         else:
-            print("Invalid input. Use the tool number (e.g., 01, 02...) or 'exit' or 'help'.")
+            print("Invalid input. Use the tool number (e.g., 1, 2...) or 'exit' or 'help'.")
             time.sleep(1)
 
 if __name__ == "__main__":
