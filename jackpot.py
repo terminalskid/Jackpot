@@ -52,7 +52,7 @@ TOOL_PATHS = {
     "08": (os.path.join(BASE_PATH, "ip-scanner.py"), "IP Scanner"),
     "09": (os.path.join(BASE_PATH, "Ip-Port-Scanner.py"), "IP Port Scanner"),
     "010": (os.path.join(BASE_PATH, "ip-generator.py"), "IP Generator"),
-    "011": (os.path.join(BASE_PATH, "ip-pinger.py"), "IP Pinger"),
+    "011": (os.path.join(BASE_PATH, "Ip-Pinger.py"), "IP Pinger"),
 }
 
 
