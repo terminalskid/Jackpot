@@ -30,9 +30,9 @@ def get_python_command():
 
 
 # -------- Settings -------- #
-YOUR_TAG = "@terminalskid"
+AUTHOR = "@terminalskid"
 TITLE = "Jackpot"
-TOOL_COUNT = 7
+TOOL_COUNT = 11
 
 import os
 
@@ -72,7 +72,7 @@ def ascii_banner():
  ╚█████╔╝██║  ██║╚██████╗██║  ██╗██║     ╚██████╔╝   ██║   
   ╚════╝ ╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝╚═╝      ╚═════╝    ╚═╝   
 
-                Terminal Multitool — by @terminalskid
+                Terminal Multitool by @terminalskid
     """
 
 def show_menu():
@@ -94,7 +94,7 @@ def max_pages():
 
 def launch_tool(code):
     if code in TOOL_PATHS:
-        print(f"\n>> Launching {TOOL_PATHS[code][1]} — handled by ({YOUR_TAG})\n")
+        print(f"\n>> Launching {TOOL_PATHS[code][1]} — handled by ({AUTHOR})\n")
         time.sleep(0.3)
         tool_path = TOOL_PATHS[code][0]
         
