@@ -42,7 +42,7 @@ If you're using **Kali Linux**, most of these dependencies are already installed
 Start by cloning the repository to your local machine:
 
 ```bash
-git clone https://github.com/yourusername/jackpot-tool.git
+git clone https://github.com/terminalskid/Jackpot.git
 cd jackpot-tool
 ```
 
