@@ -93,7 +93,7 @@ Once the dependencies are installed, you can start using **Jackpot Tool**.
 ## Requirements
 
 * **Python 3.8+** (3.10+ recommended)
-* **pip** (Python package manager)
+* **pip** (Python added to path)
 * **Dependencies listed in `requirements.txt`** (installable via `pip install -r requirements.txt`)
 
 ---
@@ -164,7 +164,7 @@ Here are a few steps for setup on **Windows** and **macOS**:
 
 ## Contact & Support
 
-For help or support, you can reach out via the following channels:
+For help or support, you can reach out by opening an issue or reaching out via the following channels:
 
 * GitHub Issues: [https://github.com/terminalskid/Jackpot/issues](https://github.com/terminalskid/Jackpot/issues)
 * Email: [support@jackpotdev.xyz](mailto:support@jackpotdev.xyz)
