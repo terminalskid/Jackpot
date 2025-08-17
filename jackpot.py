@@ -49,6 +49,10 @@ TOOL_PATHS = {
     "05": (os.path.join(BASE_PATH, "phisher.py"), "Phishing Script"),
     "06": (os.path.join(BASE_PATH, "phone-lookup.py"), "Phone Number Lookup"),
     "07": (os.path.join(BASE_PATH, "username-tracker.py"), "Username Tracker"),
+    "08": (os.path.join(BASE_PATH, "ip-scanner.py"), "IP Scanner"),
+    "09": (os.path.join(BASE_PATH, "Ip-Port-Scanner.py"), "IP Port Scanner"),
+    "010": (os.path.join(BASE_PATH, "ip-generator.py"), "IP Generator"),
+    "011": (os.path.join(BASE_PATH, "ip-pinger.py"), "IP Pinger"),
 }
 
 
